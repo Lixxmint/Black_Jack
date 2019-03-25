@@ -30,7 +30,7 @@ class Game
   end
 
   def dealer_move
-    dealer.take_card(deck) if dealer.cards.size < 3 && dealer.points < 17
+    dealer.take_card(deck) unless dealer.three_cards? && dealer.points > 17
   end
 
   def prepare_round
@@ -88,6 +88,8 @@ class Game
     round
     result = count_results
     calc_money(result)
+    dealer.open_cards
+    @interface.show_cards(user, dealer)
     @interface.show_result(result, user, dealer)
     @interface.show_money(user, dealer, bank)
   end

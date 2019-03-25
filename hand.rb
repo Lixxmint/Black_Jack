@@ -47,7 +47,7 @@ class Hand
   def cards
     @card_opened ? @cards.join(' ') : ('* ' * @cards.size).strip
   end
-  
+
   def three_cards?
     @cards.size == 3
   end
